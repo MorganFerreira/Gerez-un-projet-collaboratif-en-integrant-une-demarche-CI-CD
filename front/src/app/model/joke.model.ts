@@ -1,5 +1,5 @@
 export interface Joke {
   joke: string;
   response: string;
-  // test :
+  // test : new coverage path
 }
