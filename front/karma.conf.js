@@ -32,7 +32,12 @@ module.exports = function (config) {
         { type: 'text-summary' },
         { type: 'lcovonly', subdir: '.', file: 'lcov.info' }, // utile pour Codecov
         { type: 'cobertura', subdir: '.', file: 'coverage.xml' } // XML pour GitHub Actions
-      ]
+      ],
+      junitReporter: {
+        outputDir: 'coverage/bobapp',
+        outputFile: 'junit-report.xml',
+        useBrowserName: false
+      },
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
