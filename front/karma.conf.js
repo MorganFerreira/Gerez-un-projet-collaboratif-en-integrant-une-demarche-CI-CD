@@ -24,11 +24,6 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
-    junitReporter: {
-      outputDir: 'coverage/bobapp',
-      outputFile: 'junit-report.xml',
-      useBrowserName: false
-    },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/bobapp'),
       subdir: '.',
@@ -39,7 +34,12 @@ module.exports = function (config) {
         { type: 'cobertura', subdir: '.', file: 'coverage.xml' } // XML pour GitHub Actions
       ]
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
+    junitReporter: {
+      outputDir: 'coverage/bobapp',
+      outputFile: 'junit-report.xml',
+      useBrowserName: false
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
