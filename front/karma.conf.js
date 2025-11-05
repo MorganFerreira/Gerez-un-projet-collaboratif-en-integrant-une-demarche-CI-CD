@@ -24,21 +24,20 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true // removes the duplicated traces
     },
+    junitReporter: {
+      outputDir: 'coverage/bobapp',
+      outputFile: 'junit-report.xml',
+      useBrowserName: false
+    },
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/bobapp'),
       subdir: '.',
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
-        { type: 'junit', subdir: '.', file: 'junit-report.xml' },
         { type: 'lcovonly', subdir: '.', file: 'lcov.info' }, // utile pour Codecov
         { type: 'cobertura', subdir: '.', file: 'coverage.xml' } // XML pour GitHub Actions
-      ],
-      junitReporter: {
-        outputDir: 'coverage/bobapp',
-        outputFile: 'junit-report.xml',
-        useBrowserName: false
-      },
+      ]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
