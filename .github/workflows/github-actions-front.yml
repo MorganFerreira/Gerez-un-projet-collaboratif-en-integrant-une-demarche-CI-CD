@@ -1,0 +1,50 @@
+name: CI Frontend
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'front/**'
+      - '.github/workflows/github-actions-front.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'front/**'
+      - '.github/workflows/github-actions-front.yml'
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  build:
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['22.x']
+        os: [ubuntu-latest]
+        
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+    
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node_version }}
+  
+    - name: npm install, build and test
+      working-directory: ./front
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test-coverage
+
+    - name: Upload coverage
+      uses: phoenix-actions/test-reporting@v8
+      if: success()
+      with:
+        name: Karma Jasmine Tests
+        path: front/test-results/test-results.xml
+        reporter: java-junit
