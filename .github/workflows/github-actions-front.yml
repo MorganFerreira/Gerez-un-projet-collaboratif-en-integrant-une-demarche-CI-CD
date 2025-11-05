@@ -45,7 +45,7 @@ jobs:
       uses: dorny/test-reporter@v1
       with:
         name: Karma Jasmine Tests
-        path: front/coverage/bobapp/junit-report.xml
+        path: front/coverage/bobapp/coverage.xml
         reporter: java-junit
 
     - name: Upload coverage to codecov
