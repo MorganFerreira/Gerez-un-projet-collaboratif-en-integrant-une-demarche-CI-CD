@@ -29,7 +29,9 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        { type: 'lcovonly', subdir: '.', file: 'lcov.info' }, // utile pour Codecov
+        { type: 'cobertura', subdir: '.', file: 'coverage.xml' } // XML pour GitHub Actions
       ]
     },
     reporters: ['progress', 'kjhtml'],
