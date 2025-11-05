@@ -30,6 +30,7 @@ module.exports = function (config) {
       reporters: [
         { type: 'html' },
         { type: 'text-summary' },
+        { type: 'junit', subdir: '.', file: 'junit-report.xml' },
         { type: 'lcovonly', subdir: '.', file: 'lcov.info' }, // utile pour Codecov
         { type: 'cobertura', subdir: '.', file: 'coverage.xml' } // XML pour GitHub Actions
       ],
