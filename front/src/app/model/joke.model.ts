@@ -1,5 +1,5 @@
 export interface Joke {
   joke: string;
   response: string;
-  // test : sonar
+  // test : sonar with shadow clone disactivated
 }
