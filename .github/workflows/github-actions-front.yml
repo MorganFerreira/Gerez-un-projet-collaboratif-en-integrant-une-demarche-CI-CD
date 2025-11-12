@@ -53,3 +53,22 @@ jobs:
       with:
         files: front/coverage/bobapp/lcov.info
         token: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Cache SonarCloud packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.sonar/cache
+        key: ${{ runner.os }}-sonar
+
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v2
+      with:
+        projectBaseDir: front
+        args: >
+            -Dsonar.projectKey=MorganFerreira_Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD
+            -Dsonar.organization=morgan
+            -Dsonar.sources=src
+            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.javascript.lcov.reportPaths=front/coverage/bobapp/lcov.info
+      env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
