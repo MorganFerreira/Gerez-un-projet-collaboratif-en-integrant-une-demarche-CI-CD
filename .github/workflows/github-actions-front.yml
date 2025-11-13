@@ -63,7 +63,7 @@ jobs:
         git fetch
         git checkout main
         git pull origin main
-        git add coverage/bobapp
+        git add front/coverage/bobapp/lcov.info
         git commit -m "Add Karma code coverage report"
         git push origin main
 
