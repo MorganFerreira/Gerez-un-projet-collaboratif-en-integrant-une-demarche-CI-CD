@@ -56,6 +56,19 @@ jobs:
         files: front/coverage/bobapp/lcov.info
         token: ${{ secrets.CODECOV_TOKEN }}
 
+    - name: Commit Karma Code Coverage Report
+      run: |
+        git config --global user.email "morgan.ferreira.lopes@gmail.com"
+        git config --global user.name "MorganFerreira"
+        git fetch
+        git checkout main
+        git pull origin main
+        git add coverage/bobapp
+        git commit -m "Add Karma code coverage report"
+        git push origin main
+
+    - run: echo "🍏Npm run test-coverage's status is ${{ job.status }}."
+    
     - name: Cache SonarCloud packages
       uses: actions/cache@v4
       with:
