@@ -1,5 +1,5 @@
 export interface Joke {
   joke: string;
   response: string;
-  // test 2 : code coverage Karma
+  // test 3 : code coverage Karma
 }
