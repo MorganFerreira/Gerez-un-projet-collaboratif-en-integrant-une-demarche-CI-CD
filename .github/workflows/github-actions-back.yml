@@ -71,7 +71,7 @@ jobs:
       working-directory: ./back
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MorganFerreira_Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=MorganFerreira_Gerez-un-projet-collaboratif-en-integrant-une-demarche-CI-CD-back
 
 #QEMU : conteneur docker fonctionnant sur VM x86 and x64
     - name: Set up QEMU
