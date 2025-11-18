@@ -1,4 +1,4 @@
 export interface Joke {
   joke: string;
-  response: string;  //presentation
+  response: string;  //presentation !
 }
