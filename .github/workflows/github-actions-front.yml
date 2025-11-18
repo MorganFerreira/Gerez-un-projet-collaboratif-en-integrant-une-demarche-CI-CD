@@ -77,7 +77,7 @@ jobs:
             -Dsonar.organization=morgan
             -Dsonar.sources=src
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.javascript.lcov.reportPaths=front/coverage/bobapp/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=coverage/bobapp/lcov.info
       env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
